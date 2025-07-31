@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .container{
+        background-color: gray;
+        width: 400px;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 1rem;
+        position: relative;
+    }
+    @property --angle{
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+    .container::after, .container::before{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-image: conic-gradient(from var(--angle), transparent 70%, purple);
+        top:50% ;
+        left: 50%;
+        translate: -50% -50%;
+        z-index: -1;
+        padding: 3px;
+        border-radius:1rem;
+    }
+    .container::before{
+        filter: blur(1.5rem);
+        opacity: 0.5;
+    }
+    .container::after{
+        animation: glowing-border 5s
+        linear infinite;
+    }
+    @keyframes glowing-border{
+        from{
+            --angle:0deg;
+        }
+        to{
+            --angle:360deg;
+        }
+    }
+</style>
+<body>
+    <div class="container">
+        <h1 style="font-weight: bolder;">ANIMATION</h1>
+        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil assumenda, hic a provident quaerat doloremque in? Id, officia obcaecati? Hic harum fugiat corrupti voluptas quibusdam atque voluptate, labore earum voluptatum.
+        Et, impedit eum voluptatibus repellendus eius quia enim aliquid blanditiis illum perferendis dignissimos architecto, iure, voluptatem eos quasi cumque error perspiciatis nobis illo sequi officiis! Odio, iure. Veritatis, itaque recusandae.
+        Illum optio nulla cumque totam aperiam, suscipit recusandae numquam fuga vitae sequi sed, quae reiciendis officia praesentium fugiat, similique id. Repudiandae laboriosam quod facilis totam commodi tenetur ipsa, quasi a.</P>
+    </div>
+</body>
+</html>
