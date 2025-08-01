@@ -99,6 +99,8 @@ function loadRandomFlag() {
     const baseUrl = "https://restcountries.com/v3.1/all?fields=name,flags";
     const loader = document.querySelector('.loader')
 
+    loader.style.display = 'block'; // Show loader
+
     fetch(baseUrl)
         .then(res => res.json())
         .then(data => {
@@ -106,6 +108,8 @@ function loadRandomFlag() {
             const country = data[randomIndex];
             flagImg.src = country.flags.svg;
             countryName = country.name.common;
+
+            loader.style.display = 'none'; // Hide loader after fetching the flag
         })
         .catch(error => {
             console.error('Error fetching flag:', error);
@@ -146,6 +150,9 @@ let emojiName = '';
 
 function loadRandomEmoji() {
     const baseUrl = "https://emoji-api.com/emojis?access_key=875a95c11270186afd54045ae6748682b9168e2e";
+    const loader2 = document.querySelector('.loader2');
+
+    loader2.style.display = 'block';
     
 
     fetch(baseUrl)
@@ -159,6 +166,8 @@ function loadRandomEmoji() {
             console.log("Emoji:", emoji.character);
             console.log("Meaning:", emoji.subGroup);
             console.log("Category:", emoji.group);
+
+            loader2.style.display = 'none';
         })
         .catch(err => console.error("Error:", err));
 }
