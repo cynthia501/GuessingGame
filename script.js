@@ -29,6 +29,10 @@ const formCountry = document.getElementById('formCountry')
 const formEmoji = document.getElementById('formEmoji')
 const countryFlagGuessInput = document.getElementById('country-flag-guess').value
 const emojiDisplay = document.getElementById("emojiDisplay")
+const countryFlagGuess = document.getElementById("country-flag-guess")
+const EmojiUserGuess = document.getElementById("emoji-user-guess")
+
+
 
 let score = 0;
 
@@ -68,7 +72,8 @@ toggleButton.addEventListener('click', function () {
     form.classList.toggle('lightTheme')
     formCountry.classList.toggle('lightTheme')
     formEmoji.classList.toggle('lightTheme')
-
+    countryFlagGuess.classList.toggle('lightTheme')
+    EmojiUserGuess.classList.toggle('lightTheme')
     input.classList.toggle("lightTheme")
     scorediv.classList.toggle("lightTheme")
 
@@ -92,6 +97,7 @@ let countryName = '';
 
 function loadRandomFlag() {
     const baseUrl = "https://restcountries.com/v3.1/all?fields=name,flags";
+    const loader = document.querySelector('.loader')
 
     fetch(baseUrl)
         .then(res => res.json())
@@ -140,6 +146,7 @@ let emojiName = '';
 
 function loadRandomEmoji() {
     const baseUrl = "https://emoji-api.com/emojis?access_key=875a95c11270186afd54045ae6748682b9168e2e";
+    
 
     fetch(baseUrl)
         .then(res => res.json())
